@@ -1,6 +1,4 @@
-COPY target/*.jar app.jar
-
-ENTRYPOINT ["java", "-jar", "app.jar"]# You can change this base image to anything else
+# You can change this base image to anything else
 # But make sure to use the correct version of Java
 FROM eclipse-temurin:11-jre
 
@@ -9,7 +7,7 @@ ARG artifact=target/spring-boot-web.jar
 
 WORKDIR /opt/app
 
-COPY COPY target/*.jar app.jar
+COPY target/*.jar app.jar
 
 # This should not be changed
 ENTRYPOINT ["java","-jar","app.jar"]

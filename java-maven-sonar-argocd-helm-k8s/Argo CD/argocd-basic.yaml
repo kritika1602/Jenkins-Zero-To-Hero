@@ -1,16 +1,10 @@
-apiVersion: v1
-kind: Service
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
 metadata:
-  name: argocd-server
-  namespace: argocd
+  name: example-argocd
+  labels:
+    example: basic
 spec:
-  type: NodePort    # <- change this from ClusterIP
-  ports:
-    - name: https
-      port: 443
-      targetPort: 8080
-      nodePort: 30080   # <- must be between 30000-32767 and unused
-      protocol: TCP
-  selector:
-    app.kubernetes.io/name: argocd-server
-    app.kubernetes.io/part-of: argocd
+  server:
+    service:
+      type: NodePort
